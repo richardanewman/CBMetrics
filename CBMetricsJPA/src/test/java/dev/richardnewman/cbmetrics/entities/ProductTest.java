@@ -149,6 +149,13 @@ class ProductTest {
 		assertEquals(false, product.isHasRecurringProducts());
 	}
 	
+	@Test
+	@DisplayName("Testing product entity mapping: get category at index 0 and get name")
+	void test16() {
+		assertNotNull(product);
+		assertEquals("Test Category", product.getCategories().get(0).getName());
+	}
+	
 	
 	
 
