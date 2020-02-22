@@ -363,10 +363,11 @@ CREATE TABLE IF NOT EXISTS `product_message` (
   `product_id` INT NOT NULL,
   `message` TEXT NULL,
   `replied_to_id` INT NULL,
-  `date_posted` VARCHAR(45) NULL,
+  `date_posted` DATE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_product_message_user_profile1_idx` (`user_profile_id` ASC),
   INDEX `fk_product_message_product1_idx` (`product_id` ASC),
+  INDEX `fk_product_message_replied_to_id_idx` (`replied_to_id` ASC),
   CONSTRAINT `fk_product_message_user_profile1`
     FOREIGN KEY (`user_profile_id`)
     REFERENCES `user_profile` (`id`)
@@ -375,6 +376,11 @@ CREATE TABLE IF NOT EXISTS `product_message` (
   CONSTRAINT `fk_product_message_product1`
     FOREIGN KEY (`product_id`)
     REFERENCES `product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_message_replied_to_id`
+    FOREIGN KEY (`replied_to_id`)
+    REFERENCES `user_profile` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -397,6 +403,7 @@ START TRANSACTION;
 USE `cbdb`;
 INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`) VALUES (1, 'rick@richardnewman.dev', '$2y$10$qxijAYpoT7SFIOxoSj66F.CHyh51ZNxXc2EtLKu9hmmfSBLWeoT/i', 'ADMIN', 1, '2020-02-20 00:00:01');
 INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`) VALUES (2, 'test@testemail.com', '$2y$10$qxijAYpoT7SFIOxoSj66F.CHyh51ZNxXc2EtLKu9hmmfSBLWeoT/i', 'STANDARD', 1, '2020-02-20 00:00:01');
+INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`) VALUES (3, 'test@testmail.com', '$2y$10$qxijAYpoT7SFIOxoSj66F.CHyh51ZNxXc2EtLKu9hmmfSBLWeoT/i', 'STANDARD', 1, '2020-02-20 00:00:01');
 
 COMMIT;
 
@@ -407,7 +414,8 @@ COMMIT;
 START TRANSACTION;
 USE `cbdb`;
 INSERT INTO `user_profile` (`id`, `user_account_id`, `first_name`, `last_name`, `business`, `website`, `bio`, `profile_pic`, `city`, `state`) VALUES (1, 1, 'Richard', 'Newman', '#MakeBank', 'https://richardnewman.dev', 'Time to #makebank with ClickBank!', 'https://avatars0.githubusercontent.com/u/17536735?s=400&u=566cc933a34bf6f72cc9e68b34968dcf182222e8&v=4', 'Boise', 'Idaho');
-INSERT INTO `user_profile` (`id`, `user_account_id`, `first_name`, `last_name`, `business`, `website`, `bio`, `profile_pic`, `city`, `state`) VALUES (DEFAULT, 2, 'John', 'Crestani', 'Pendragon Labs LLC', 'https://johncrestani.com', 'John Crestani is an internationally-renowned expert in affiliate marketing. \n\nSince(involuntarily) leaving his crushy job in the corporate world, in just a couple of years he’s gone on to build an empire in the affiliate marketing space. And now he’s taken it upon himself to teach a handful of aspiring marketers how they too can get a piece of the affiliate marketing action.\nSo what are you waiting for? Join John and gain exposure to his unparalleled insight and experience, and become part of a community of people who share your aspirations. Now is the time for you to start living the dream.', 'https://johncrestani.com/press/bt2_3431/', NULL, NULL);
+INSERT INTO `user_profile` (`id`, `user_account_id`, `first_name`, `last_name`, `business`, `website`, `bio`, `profile_pic`, `city`, `state`) VALUES (2, 2, 'John', 'Crestani', 'Pendragon Labs LLC', 'https://johncrestani.com', 'John Crestani is an internationally-renowned expert in affiliate marketing. \n\nSince(involuntarily) leaving his crushy job in the corporate world, in just a couple of years he’s gone on to build an empire in the affiliate marketing space. And now he’s taken it upon himself to teach a handful of aspiring marketers how they too can get a piece of the affiliate marketing action.\nSo what are you waiting for? Join John and gain exposure to his unparalleled insight and experience, and become part of a community of people who share your aspirations. Now is the time for you to start living the dream.', 'https://johncrestani.com/press/bt2_3431/', 'Boise', 'Idaho');
+INSERT INTO `user_profile` (`id`, `user_account_id`, `first_name`, `last_name`, `business`, `website`, `bio`, `profile_pic`, `city`, `state`) VALUES (3, 3, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 
 COMMIT;
 
@@ -559,7 +567,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `product_message` (`id`, `user_profile_id`, `product_id`, `message`, `replied_to_id`, `date_posted`) VALUES (1, 1, 1, 'This looks like an interesting product. Has anyone promoted this lately?', NULL, '2020-02-20 00:00:01');
+INSERT INTO `product_message` (`id`, `user_profile_id`, `product_id`, `message`, `replied_to_id`, `date_posted`) VALUES (1, 1, 1, 'This looks like an interesting product. Has anyone promoted this lately?', 3, '2020-02-20 00:00:01');
 INSERT INTO `product_message` (`id`, `user_profile_id`, `product_id`, `message`, `replied_to_id`, `date_posted`) VALUES (2, 2, 1, 'I did a little marketing for it awhile back. Shoot me a DM if you have any questions.', 1, '2020-02-20 00:00:01');
 
 COMMIT;

@@ -1,6 +1,5 @@
 package dev.richardnewman.cbmetrics.entities;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
