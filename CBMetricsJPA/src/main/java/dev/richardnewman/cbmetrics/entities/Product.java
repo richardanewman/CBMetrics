@@ -1,12 +1,18 @@
 package dev.richardnewman.cbmetrics.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Product {
@@ -51,12 +57,15 @@ public class Product {
 	
 	@Column(name="active_date")
 	private LocalDate activeDate;
-
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(cascade = { CascadeType.PERSIST}, mappedBy="products")
+	private List<Category> categories;
 
 	public Product(int id, String cbID, int popularityRank, String title, String description,
 			boolean hasRecurringProducts, double gravity, double percentPerSale, double percentPerRebill,
 			double avgEarningsPerSale, double initialEarningsPerSale, double totalRebillAmt, double referred,
-			int commission, LocalDate activeDate) {
+			int commission, LocalDate activeDate, List<Category> categories) {
 		super();
 		this.id = id;
 		this.cbID = cbID;
@@ -73,8 +82,9 @@ public class Product {
 		this.referred = referred;
 		this.commission = commission;
 		this.activeDate = activeDate;
+		this.categories = categories;
 	}
-	
+
 	public Product() {
 		super();
 	}
@@ -199,6 +209,14 @@ public class Product {
 		this.activeDate = activeDate;
 	}
 
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -232,6 +250,8 @@ public class Product {
 		builder.append(commission);
 		builder.append(", activeDate=");
 		builder.append(activeDate);
+		builder.append(", categories=");
+		builder.append(categories);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -244,6 +264,7 @@ public class Product {
 		long temp;
 		temp = Double.doubleToLongBits(avgEarningsPerSale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
 		result = prime * result + ((cbID == null) ? 0 : cbID.hashCode());
 		result = prime * result + commission;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
@@ -282,6 +303,11 @@ public class Product {
 			return false;
 		if (Double.doubleToLongBits(avgEarningsPerSale) != Double.doubleToLongBits(other.avgEarningsPerSale))
 			return false;
+		if (categories == null) {
+			if (other.categories != null)
+				return false;
+		} else if (!categories.equals(other.categories))
+			return false;
 		if (cbID == null) {
 			if (other.cbID != null)
 				return false;
@@ -319,6 +345,8 @@ public class Product {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	
