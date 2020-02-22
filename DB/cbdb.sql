@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `dm` (
   `composer_id` INT NOT NULL,
   `recipient_id` INT NOT NULL,
   `message` TEXT NULL,
-  `date_posted` DATETIME NULL,
+  `date_posted` DATE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_dm_user_profile1_idx` (`composer_id` ASC),
   INDEX `fk_dm_user_profile2_idx` (`recipient_id` ASC),
@@ -548,8 +548,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `dm` (`id`, `composer_id`, `recipient_id`, `message`, `date_posted`) VALUES (1, 1, 2, 'Hey John! Good to have you here.', '2020-02-20 00:00:01');
-INSERT INTO `dm` (`id`, `composer_id`, `recipient_id`, `message`, `date_posted`) VALUES (2, 2, 1, 'Yeah good to be here!', '2020-02-20 00:00:01');
+INSERT INTO `dm` (`id`, `composer_id`, `recipient_id`, `message`, `date_posted`) VALUES (1, 1, 2, 'Hey John! Good to have you here.', '2020-02-20');
+INSERT INTO `dm` (`id`, `composer_id`, `recipient_id`, `message`, `date_posted`) VALUES (2, 2, 1, 'Yeah good to be here!', '2020-02-20');
 
 COMMIT;
 
