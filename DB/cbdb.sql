@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS `popularity_rank` ;
 CREATE TABLE IF NOT EXISTS `popularity_rank` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
-  `date` TIMESTAMP NULL,
+  `date_created` DATE NULL,
   `rank_value` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_popularity_rank_product1_idx` (`product_id` ASC),
@@ -110,7 +110,7 @@ DROP TABLE IF EXISTS `gravity` ;
 CREATE TABLE IF NOT EXISTS `gravity` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
-  `date` DATE NULL,
+  `date_created` DATE NULL,
   `gravity_value` DOUBLE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_gravity_product1_idx` (`product_id` ASC),
@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS `average_earnings_per_sale` ;
 CREATE TABLE IF NOT EXISTS `average_earnings_per_sale` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
-  `date` DATE NULL,
+  `date_created` DATE NULL,
   `avg_earnings_value` DOUBLE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_average_earnings_per_sale_product1_idx` (`product_id` ASC),
@@ -190,7 +190,7 @@ DROP TABLE IF EXISTS `initial_earnings_per_sale` ;
 CREATE TABLE IF NOT EXISTS `initial_earnings_per_sale` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
-  `date` DATE NULL,
+  `date_created` DATE NULL,
   `initial_earnings_value` DOUBLE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_initial_earnings_per_sale_product1_idx` (`product_id` ASC),
@@ -210,7 +210,7 @@ DROP TABLE IF EXISTS `total_rebill_amt` ;
 CREATE TABLE IF NOT EXISTS `total_rebill_amt` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
-  `date` DATE NULL,
+  `date_created` DATE NULL,
   `total_rebill_value` DOUBLE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_total_rebill_amt_product1_idx` (`product_id` ASC),
@@ -230,7 +230,7 @@ DROP TABLE IF EXISTS `referred` ;
 CREATE TABLE IF NOT EXISTS `referred` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
-  `date` DATE NULL,
+  `date_created` DATE NULL,
   `referred_value` DOUBLE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_referred_product1_idx` (`product_id` ASC),
@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `product_notes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_profile_id` INT NOT NULL,
   `product_id` INT NOT NULL,
-  `date_created` TIMESTAMP NULL,
+  `date_created` DATE NULL,
   `notes` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_product_notes_user_profile1_idx` (`user_profile_id` ASC),
@@ -435,7 +435,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `popularity_rank` (`id`, `product_id`, `date`, `rank_value`) VALUES (1, 1, '2020-02-20', 0);
+INSERT INTO `popularity_rank` (`id`, `product_id`, `date_created`, `rank_value`) VALUES (1, 1, '2020-02-20', 0);
 
 COMMIT;
 
@@ -445,7 +445,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `gravity` (`id`, `product_id`, `date`, `gravity_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `gravity` (`id`, `product_id`, `date_created`, `gravity_value`) VALUES (1, 1, '2020-02-20', 0.0);
 
 COMMIT;
 
@@ -475,7 +475,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `average_earnings_per_sale` (`id`, `product_id`, `date`, `avg_earnings_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `average_earnings_per_sale` (`id`, `product_id`, `date_created`, `avg_earnings_value`) VALUES (1, 1, '2020-02-20', 0.0);
 
 COMMIT;
 
@@ -485,7 +485,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `initial_earnings_per_sale` (`id`, `product_id`, `date`, `initial_earnings_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `initial_earnings_per_sale` (`id`, `product_id`, `date_created`, `initial_earnings_value`) VALUES (1, 1, '2020-02-20', 0.0);
 
 COMMIT;
 
@@ -495,7 +495,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `total_rebill_amt` (`id`, `product_id`, `date`, `total_rebill_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `total_rebill_amt` (`id`, `product_id`, `date_created`, `total_rebill_value`) VALUES (1, 1, '2020-02-20', 0.0);
 
 COMMIT;
 
@@ -505,7 +505,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `referred` (`id`, `product_id`, `date`, `referred_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `referred` (`id`, `product_id`, `date_created`, `referred_value`) VALUES (1, 1, '2020-02-20', 0.0);
 
 COMMIT;
 
