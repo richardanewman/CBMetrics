@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `percent_per_rebill` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
   `date_changed` DATE NULL,
-  `percentage_value` DOUBLE NULL,
+  `percent_rebill_value` DOUBLE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_percent_per_rebill_product1_idx` (`product_id` ASC),
   CONSTRAINT `fk_percent_per_rebill_product1`
@@ -465,7 +465,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `percent_per_rebill` (`id`, `product_id`, `date_changed`, `percentage_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `percent_per_rebill` (`id`, `product_id`, `date_changed`, `percent_rebill_value`) VALUES (1, 1, '2020-02-20', 0.0);
 
 COMMIT;
 
