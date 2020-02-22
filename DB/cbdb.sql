@@ -545,7 +545,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `product_notes` (`id`, `user_profile_id`, `product_id`, `date_created`, `notes`) VALUES (1, 1, 1, '2020-02-20 00:00:01', 'Testing out products notes.');
+INSERT INTO `product_notes` (`id`, `user_profile_id`, `product_id`, `date_created`, `notes`) VALUES (1, 1, 1, '2020-02-20 00:00:01', 'Testing out product notes.');
 INSERT INTO `product_notes` (`id`, `user_profile_id`, `product_id`, `date_created`, `notes`) VALUES (2, 2, 1, '2020-02-20 00:00:01', 'Testing out product notes with second user profile.');
 
 COMMIT;
