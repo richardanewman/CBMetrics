@@ -9,7 +9,22 @@
     </provider>
 
 	<!-- Class Definitions -->
+	<class>dev.richardnewman.cbmetrics.entities.AverageEarningsPerSale</class>
+	<class>dev.richardnewman.cbmetrics.entities.Category</class>
+	<class>dev.richardnewman.cbmetrics.entities.Commission</class>
+	<class>dev.richardnewman.cbmetrics.entities.DirectMessage</class>
+	<class>dev.richardnewman.cbmetrics.entities.Gravity</class>
+	<class>dev.richardnewman.cbmetrics.entities.InitialEarningsPerSale</class>
+	<class>dev.richardnewman.cbmetrics.entities.PercentPerRebill</class>
+	<class>dev.richardnewman.cbmetrics.entities.PercentPerSale</class>
+	<class>dev.richardnewman.cbmetrics.entities.PopularityRank</class>
+	<class>dev.richardnewman.cbmetrics.entities.Product</class>
+	<class>dev.richardnewman.cbmetrics.entities.ProductMessage</class>
+	<class>dev.richardnewman.cbmetrics.entities.ProductNotes</class>
+	<class>dev.richardnewman.cbmetrics.entities.Referred</class>
+	<class>dev.richardnewman.cbmetrics.entities.TotalRebillAmount</class>
 	<class>dev.richardnewman.cbmetrics.entities.UserAccount</class>
+	<class>dev.richardnewman.cbmetrics.entities.UserProfile</class>
 
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cbdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
