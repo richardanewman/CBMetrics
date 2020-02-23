@@ -12,3 +12,4 @@ bin
 .env.example
 .env.local
 .env.staging
+/src/environments/**
