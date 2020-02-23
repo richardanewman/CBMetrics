@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,6 +70,22 @@ public class ProductController {
 			e.printStackTrace();
 			res.setStatus(400);
 			return null;
+		}
+	}
+	
+	@DeleteMapping("product/{id}")
+	private boolean deleteProduct(
+			@PathVariable int id,
+			HttpServletResponse res) {
+		
+		try {
+			boolean delete = prodSvc.destroy(id);
+			res.setStatus(200);
+			return delete;
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			return false;
 		}
 	}
 
