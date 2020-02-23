@@ -62,4 +62,18 @@ public class ProductServiceImpl implements ProductService {
 		return update;
 	}
 
+	@Override
+	public boolean destroy(int id) {
+		Product delete = prodRepo.findById(id).get();
+		
+		if(delete != null) {
+			prodRepo.delete(delete);
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+		
+
 }

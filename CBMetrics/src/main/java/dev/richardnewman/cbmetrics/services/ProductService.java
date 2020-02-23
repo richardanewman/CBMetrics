@@ -13,5 +13,7 @@ public interface ProductService {
 	public Product create(Product product);
 	
 	public Product update(int id, Product product);
+	
+	public boolean destroy(int id);
 
 }

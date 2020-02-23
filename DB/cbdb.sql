@@ -427,6 +427,7 @@ COMMIT;
 START TRANSACTION;
 USE `cbdb`;
 INSERT INTO `product` (`id`, `cb_id`, `popularity_rank`, `title`, `description`, `has_recurring_products`, `gravity`, `percent_per_sale`, `percent_per_rebill`, `average_earnings_per_sale`, `initial_earnings_per_sale`, `total_rebill_amt`, `referred`, `commission`, `active_date`) VALUES (1, 'defaultprod1', 0, 'Default Product Title', 'Testing product description.', 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, '2020-02-20 00:00:01');
+INSERT INTO `product` (`id`, `cb_id`, `popularity_rank`, `title`, `description`, `has_recurring_products`, `gravity`, `percent_per_sale`, `percent_per_rebill`, `average_earnings_per_sale`, `initial_earnings_per_sale`, `total_rebill_amt`, `referred`, `commission`, `active_date`) VALUES (2, 'defaultprod2', 1, 'Second Default Product', 'Testing second default product description.', 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1, '2020-02-20 00:00:01');
 
 COMMIT;
 
@@ -477,6 +478,8 @@ COMMIT;
 START TRANSACTION;
 USE `cbdb`;
 INSERT INTO `average_earnings_per_sale` (`id`, `product_id`, `date_created`, `avg_earnings_value`) VALUES (1, 1, '2020-02-20', 0.0);
+INSERT INTO `average_earnings_per_sale` (`id`, `product_id`, `date_created`, `avg_earnings_value`) VALUES (2, 1, '2020-02-21', 0.1);
+INSERT INTO `average_earnings_per_sale` (`id`, `product_id`, `date_created`, `avg_earnings_value`) VALUES (3, 2, '2020-02-22', 1.0);
 
 COMMIT;
 
