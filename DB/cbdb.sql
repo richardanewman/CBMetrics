@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `user_account` (
   `role` VARCHAR(45) NOT NULL,
   `enabled` TINYINT NOT NULL DEFAULT 1,
   `registration_timestamp` TIMESTAMP NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -401,9 +402,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cbdb`;
-INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`) VALUES (1, 'rick@richardnewman.dev', '$2y$10$qxijAYpoT7SFIOxoSj66F.CHyh51ZNxXc2EtLKu9hmmfSBLWeoT/i', 'ADMIN', 1, '2020-02-20 00:00:01');
-INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`) VALUES (2, 'test@testemail.com', '$2y$10$qxijAYpoT7SFIOxoSj66F.CHyh51ZNxXc2EtLKu9hmmfSBLWeoT/i', 'STANDARD', 1, '2020-02-20 00:00:01');
-INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`) VALUES (3, 'test@testmail.com', '$2y$10$qxijAYpoT7SFIOxoSj66F.CHyh51ZNxXc2EtLKu9hmmfSBLWeoT/i', 'STANDARD', 1, '2020-02-20 00:00:01');
+INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`, `username`) VALUES (1, 'rick@richardnewman.dev', '$2y$10$DH/RcYIYhHvrvTFyO8L/QOVcYY8sUoFi/nBxSvUc6Y8nDgTjfawIa', 'ADMIN', 1, '2020-02-20 00:00:01', 'rick');
+INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`, `username`) VALUES (2, 'test@testemail.com', '$2y$10$DH/RcYIYhHvrvTFyO8L/QOVcYY8sUoFi/nBxSvUc6Y8nDgTjfawIa', 'STANDARD', 1, '2020-02-20 00:00:01', 'john');
+INSERT INTO `user_account` (`id`, `email`, `password`, `role`, `enabled`, `registration_timestamp`, `username`) VALUES (3, 'test@testmail.com', '$2y$10$DH/RcYIYhHvrvTFyO8L/QOVcYY8sUoFi/nBxSvUc6Y8nDgTjfawIa', 'STANDARD', 1, '2020-02-20 00:00:01', 'emptyuser');
 
 COMMIT;
 
