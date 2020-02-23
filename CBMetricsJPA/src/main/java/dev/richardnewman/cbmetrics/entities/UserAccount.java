@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="user_account")
 public class UserAccount {
@@ -27,10 +29,13 @@ public class UserAccount {
 	private boolean enabled;
 	
 	@Column(name="registration_timestamp")
+	@CreationTimestamp
 	private Timestamp registrationTimestamp;
+	
+	private String username;
 
 	public UserAccount(int id, String email, String password, String role, boolean enabled,
-			Timestamp registrationTimestamp) {
+			Timestamp registrationTimestamp, String username) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -38,8 +43,9 @@ public class UserAccount {
 		this.role = role;
 		this.enabled = enabled;
 		this.registrationTimestamp = registrationTimestamp;
+		this.username = username;
 	}
-	
+
 	public UserAccount() {
 		super();
 	}
@@ -92,10 +98,33 @@ public class UserAccount {
 		this.registrationTimestamp = registrationTimestamp;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public String toString() {
-		return "UserAccount [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + ", enabled="
-				+ enabled + ", registrationTimestamp=" + registrationTimestamp + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserAccount [id=");
+		builder.append(id);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", enabled=");
+		builder.append(enabled);
+		builder.append(", registrationTimestamp=");
+		builder.append(registrationTimestamp);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override
@@ -108,6 +137,7 @@ public class UserAccount {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((registrationTimestamp == null) ? 0 : registrationTimestamp.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -144,9 +174,14 @@ public class UserAccount {
 				return false;
 		} else if (!role.equals(other.role))
 			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
-	
+
 	
 	
 	
