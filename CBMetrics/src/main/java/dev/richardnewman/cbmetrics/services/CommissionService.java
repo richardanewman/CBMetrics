@@ -6,7 +6,7 @@ import dev.richardnewman.cbmetrics.entities.Commission;
 
 public interface CommissionService {
 	
-public List<Commission> index();
+	public List<Commission> index();
 	
 	public List<Commission> showByProductID(int pid); //Get All by Product ID (pid)
 	
