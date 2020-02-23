@@ -8,3 +8,7 @@ bin
 .gradle
 *.war
 *.bak
+.env
+.env.example
+.env.local
+.env.staging
