@@ -6,7 +6,7 @@ import dev.richardnewman.cbmetrics.entities.InitialEarningsPerSale;
 
 public interface InitialEarningsPerSaleService {
 	
-public List<InitialEarningsPerSale> index();
+	public List<InitialEarningsPerSale> index();
 	
 	public List<InitialEarningsPerSale> showByProductID(int pid); //Get All by Product ID (pid)
 	
