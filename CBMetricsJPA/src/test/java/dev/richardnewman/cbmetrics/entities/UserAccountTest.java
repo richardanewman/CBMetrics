@@ -80,5 +80,11 @@ class UserAccountTest {
 		assertNotNull(user);
 		assertEquals(true, user.isEnabled());
 	}
+	@Test
+	@DisplayName("Testing user account entity mapping: get username")
+	void test7() {
+		assertNotNull(user);
+		assertEquals("rick", user.getUsername());
+	}
 
 }
