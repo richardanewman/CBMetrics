@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Commission {
 	
@@ -21,6 +23,20 @@ public class Commission {
 	
 	@ManyToOne
 	@JoinColumn(name="product_id")
+	@JsonIgnoreProperties({"popularityRank", 
+		"title",
+        "description",
+        "hasRecurringProducts",
+        "gravity",
+        "percentPerSale",
+        "percentPerRebill",
+        "avgEarningsPerSale",
+        "initialEarningsPerSale",
+        "totalRebillAmt",
+        "referred",
+        "commission",
+        "activeDate",
+        "categories"})
 	private Product product;
 	
 	@Column(name="date_changed")
