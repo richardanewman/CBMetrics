@@ -26,6 +26,7 @@ public class AuthController {
 			res.setStatus(400);
 			return null;
 		} else {
+			res.setStatus(200);
 			return svc.register(user);
 		}
 	}

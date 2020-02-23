@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
 	
@@ -21,6 +23,7 @@ public class Category {
 	
 	@ManyToMany
 	@JoinTable(name="category_has_product", joinColumns = @JoinColumn(name="category_id"), inverseJoinColumns = @JoinColumn(name="product_id"))
+	@JsonIgnore
 	private List<Product> products;
 
 	public Category(int id, String name, List<Product> products) {
