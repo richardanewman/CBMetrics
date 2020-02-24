@@ -5,6 +5,7 @@ import java.security.Principal;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import dev.richardnewman.cbmetrics.entities.UserAccount;
 import dev.richardnewman.cbmetrics.services.AuthService;
 
 @RestController
+@CrossOrigin({ "*", "http://localhost:4288" })
 public class AuthController {
 	
 	@Autowired
