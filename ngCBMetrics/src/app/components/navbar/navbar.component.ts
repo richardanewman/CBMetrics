@@ -27,11 +27,12 @@ export class NavbarComponent implements OnInit {
         this.uSvc.getUserInSession().subscribe(
           user => {
             this.currentUser = user;
-            if (this.currentUser.role === 'ADMIN') {
-              this.route.navigateByUrl('admin');
-            } else {
-              this.route.navigateByUrl('profile');
-            }
+            this.route.navigateByUrl('profile');
+            // if (this.currentUser.role === 'ADMIN') {
+            //   this.route.navigateByUrl('admin');
+            // } else {
+            //   this.route.navigateByUrl('profile');
+            // }
           },
           err => {
             console.log('in login, get user session');

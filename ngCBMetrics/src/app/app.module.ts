@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     RegisterComponent,
     UserAccountComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

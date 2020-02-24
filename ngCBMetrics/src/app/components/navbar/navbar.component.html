@@ -5,13 +5,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['profile']">Dashboard</a>
-      <a class="nav-item nav-link" [routerLink]="['products']">Products</a>
       <div *ngIf="!checkIfLoggedIn()" class="inline nav-item nav-link">
       <a class="nav-item nav-link" data-toggle="modal" data-target="#loginModal" [routerLink]="['login']">Login</a>
       <a class="nav-item nav-link" [routerLink]="['register']">Register</a>
       </div>
       <div *ngIf="checkIfLoggedIn()" class="inline nav-item nav-link">
+      <a class="nav-item nav-link" [routerLink]="['profile']">Dashboard</a>
+      <a class="nav-item nav-link" [routerLink]="['products']">Products</a>
       <a class="nav-item nav-link"  (click)="logout()" [routerLink]="['logout']">Logout</a>
       </div>
 
